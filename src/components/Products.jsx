@@ -5,12 +5,15 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Products({data}) {
   return (
+    <>
     <div style={{display : "flex", flexWrap: "wrap", gap:"15px",margin:"5px"}} >
     {data.map((e)=>
     <Card key={e.id} sx={{ maxWidth: 345 }}>
+    <Link to={`/single/${e.id}`}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -27,6 +30,7 @@ export default function Products({data}) {
           </Typography>
         </CardContent>
       </CardActionArea>
+      </Link>
       <CardActions>
         <Button size="small" color="primary">
           Share
@@ -35,5 +39,6 @@ export default function Products({data}) {
     </Card>
   )}
     </div>
+    </>
 )
 }
