@@ -10,10 +10,13 @@ import Single from './components/Single'
 
 function App() {
   const[data,setData] =  useState([])
+  const [load,setload] = useState(true)
   useEffect(()=>{
     fetch('https://fakestoreapi.com/products/')
             .then(res=>res.json())
-            .then(json=>setData(json))
+            .then(json=>{setData(json)
+              setload(false)
+            })
   },[])
 
   return (
@@ -21,7 +24,7 @@ function App() {
     <BrowserRouter>
     <Navbar/>
     <Routes>
-    <Route path='/' element={<Products data={data} />}/>
+    <Route path='/' element={<Products data={data} load={load} />}/>
     <Route path='/cart' element={<Cart />}/>
     <Route path='/single/:id' element={<Single />}/>
     </Routes>
