@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   
   const carts = useSelector((state) => state.addToCart.value)
+  const price = useSelector((state) => state.addToCart.totalPrice)
   useEffect(()=>{
     console.log(carts)
   },[carts])
@@ -144,7 +145,7 @@ export default function Cart() {
 
                     <div className="d-flex justify-content-between">
                       <p className="mb-2">Subtotal</p>
-                      <p className="mb-2">$4798.00</p>
+                      <p className="mb-2">${price}</p>
                     </div>
 
                     <div className="d-flex justify-content-between">
@@ -154,7 +155,7 @@ export default function Cart() {
 
                     <div className="d-flex justify-content-between">
                       <p className="mb-2">Total(Incl. taxes)</p>
-                      <p className="mb-2">$4818.00</p>
+                      <p className="mb-2">${price+20}</p>
                     </div>
 
                     <MDBBtn color="info" block size="lg">
